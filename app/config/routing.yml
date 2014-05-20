@@ -1,0 +1,15 @@
+nkt_user:
+    resource: "@NktUserBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+hwi_oauth_redirect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
+    prefix:   /connect
+
+hwi_oauth_login:
+    resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
+    prefix:   /login
+
+twitter_login:
+    pattern: /login/check-twitter
