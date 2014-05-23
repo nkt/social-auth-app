@@ -6,7 +6,6 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * @ORM\Table(name="users")
  * @ORM\Entity
  * @ORM\Table(name="users", indexes={
  *     @ORM\Index(name="vk_id", columns={"vk_id"}),
@@ -41,6 +40,11 @@ class User implements UserInterface
      * @ORM\Column(name="vk_id", type="integer", nullable=true)
      */
     private $vkId;
+    /**
+     * @var string
+     * @ORM\Column(nullable=true)
+     */
+    private $email;
 
     public function getId()
     {
@@ -98,5 +102,15 @@ class User implements UserInterface
     public function setVkId($vkId)
     {
         $this->vkId = $vkId;
+    }
+
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    public function setEmail($email)
+    {
+        $this->email = $email;
     }
 }
