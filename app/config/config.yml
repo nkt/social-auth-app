@@ -69,7 +69,7 @@ swiftmailer:
     spool:     { type: memory }
 
 hwi_oauth:
-    firewall_name: secured_area
+    firewall_name: main
     resource_owners:
         twitter:
             type:          twitter
@@ -81,8 +81,7 @@ parameters:
     oauth.properties:
         twitter: twitterId
 
-
 services:
     oauth.user.provider:
-        parent: hwi_oauth.user.provider.entity
-        arguments: [%user.class%, %oauth.properties%]
+        class: Nkt\UserBundle\Security\OAuthUserProvider
+        arguments: [@doctrine, %user.class%, %oauth.properties%]
