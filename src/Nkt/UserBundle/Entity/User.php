@@ -8,6 +8,10 @@ use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * @ORM\Table(name="users")
  * @ORM\Entity
+ * @ORM\Table(name="users", indexes={
+ *     @ORM\Index(name="vk_id", columns={"vk_id"}),
+ *     @ORM\Index(name="twitter_id", columns={"twitter_id"})
+ * })
  */
 class User implements UserInterface
 {
@@ -28,9 +32,15 @@ class User implements UserInterface
     /**
      * @var integer
      *
-     * @ORM\Column(name="twitter_id", type="integer")
+     * @ORM\Column(name="twitter_id", type="integer", nullable=true)
      */
     private $twitterId;
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="vk_id", type="integer", nullable=true)
+     */
+    private $vkId;
 
     public function getId()
     {
@@ -78,5 +88,15 @@ class User implements UserInterface
 
     public function eraseCredentials()
     {
+    }
+
+    public function getVkId()
+    {
+        return $this->vkId;
+    }
+
+    public function setVkId($vkId)
+    {
+        $this->vkId = $vkId;
     }
 }

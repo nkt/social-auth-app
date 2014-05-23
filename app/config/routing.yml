@@ -13,3 +13,5 @@ hwi_oauth_login:
 
 twitter_login:
     pattern: /login/check-twitter
+vk_login:
+    pattern: /login/check-vk
